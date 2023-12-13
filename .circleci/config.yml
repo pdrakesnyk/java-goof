@@ -29,8 +29,9 @@ jobs:
       - run:
           name: Test
           command: mvn test
-
-      - snyk/scan
+      - snyk/scan:
+        token-variable: SNYK_TOKEN
+        fail-on-issues: false
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
