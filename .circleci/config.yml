@@ -29,13 +29,9 @@ jobs:
       - run:
           name: Test
           command: mvn test
-  snyk-scan:
-    docker:
-      - image: cimg/openjdk:11.0
-    steps:
       - snyk/scan:
-          token-variable: SNYK_TOKEN
           fail-on-issues: false
+          token-variable: SNYK_TOKEN
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
@@ -43,4 +39,3 @@ workflows:
     # Inside the workflow, you define the jobs you want to run.
     jobs:
       - build-and-test
-      - snyk-scan
