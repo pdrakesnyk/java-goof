@@ -29,11 +29,11 @@ jobs:
       - run:
           name: Test
           command: mvn test
-  snyk-test:
+  snyk-scan:
     docker:
       - image: cimg/openjdk:11.0
     steps:
-      - snyk/scan
+      - snyk/scan:
           token-variable: SNYK_TOKEN
           fail-on-issues: false
 # Invoke jobs via workflows
